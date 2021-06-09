@@ -3,6 +3,7 @@ from requests import Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import random
 import config
+from ..start import abort
 def price_direct_conversion(symbol, convert):
     """
         For 1 symbol we got output convert. 
@@ -35,10 +36,12 @@ def price_direct_conversion(symbol, convert):
         raise Exception()
 
 def parse_direct_conversion(data: dict):
-    convert = list(data.get("data").get("quote").keys())[0]
-    price = data.get("data").get("quote").get(convert).get("price")
-    # add business logic
-    return price
+    try:
+        convert = list(data.get("data").get("quote").keys())[0]
+        price = data.get("data").get("quote").get(convert).get("price")
+        return price
+    except Exception as e:
+       abort(e.args)
 
 def fiat_conversion(symbol, convert):
     """
@@ -78,6 +81,9 @@ def price_fiat_conversion(symbol, convert):
         Exception
         
 def parse_fiat_conversion(data: dict):
-    convert = list(data.get("quotes").keys())[0]
-    price = data.get("quotes").get('USDXOF')
-    return price
+    try:
+        convert = list(data.get("quotes").keys())[0]
+        price = data.get("quotes").get('USDXOF')
+        return price
+    except Exception as e:
+        abort(e.args)

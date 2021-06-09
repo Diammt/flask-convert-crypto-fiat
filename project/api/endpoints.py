@@ -41,7 +41,6 @@ def getConversionRate(reqargs:dict):
                 output_index = parse_direct_conversion(price_direct_conversion(from_money, to_money))
                 # output = float(output_index)*float(reqargs.get("amount"))
                 
-        # to do: add business 
         output = float(output_index)*float(amount)
        
         return {
