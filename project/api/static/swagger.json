@@ -1,0 +1,54 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.0",
+        "title": "Cool product name"
+    },
+    "paths": {
+        "/convert": {
+            "post": {
+                "summary": "Make conversion",
+                "description": "",
+                "responses": {
+                    "201": {
+                        "description": "Output value"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "required": [
+                                "from",
+                                "to",
+                                "amount"
+                            ],
+                            "properties": {
+                                "from": {
+                                    "type": "string",
+                                    "example": "BTC",
+                                    "description": "fiat origin source name"
+                                },
+                                "to": {
+                                    "type": "string",
+                                    "example": "USD",
+                                    "description": "fiat destination name"
+                                },
+                                "amount": {
+                                    "type": "string",
+                                    "example": 1,
+                                    "description": "fiat origin amount"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "tags": [
+                    "make-conversion"
+                ]
+            }
+        }
+    },
+    "definitions": {}
+}

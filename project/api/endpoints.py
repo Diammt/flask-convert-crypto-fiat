@@ -7,8 +7,8 @@ def getConversionRate(reqargs:dict):
             'XOF'
         ]
 
-        from_money = reqargs.get("from_money")
-        to_money = reqargs.get("to_money")
+        from_money = reqargs.get("from")
+        to_money = reqargs.get("to")
         amount = reqargs.get("amount")
         # For CFA convert into EUR, then in XOF
         if (from_money in DOUBLE_CONVERSION_FIAT) and (to_money in DOUBLE_CONVERSION_FIAT):
